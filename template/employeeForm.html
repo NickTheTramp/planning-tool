@@ -1,0 +1,19 @@
+{{define "content"}}
+<form method="POST" class="mt-4">
+    <div class="mb-3">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" required>
+    </div>
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{{if .FirstName}}
+<div class="alert alert-success mt-4" role="alert">
+    Employee Saved: {{.Data.FirstName}} {{.Data.LastName}}
+</div>
+{{end}}
+{{end}}
