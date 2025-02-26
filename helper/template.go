@@ -11,7 +11,7 @@ type Route struct {
 	FileName string
 }
 
-func ViewTemplate(w http.ResponseWriter, route Route, data interface{}) {
+func RenderTemplate(w http.ResponseWriter, route Route, data interface{}) {
 	basePath := filepath.Join("template", "base.html")
 	formPath := filepath.Join("template", route.FileName)
 
