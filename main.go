@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/NickTheTramp/planning-tool/handler"
 	h "github.com/NickTheTramp/planning-tool/helper"
+	"github.com/labstack/echo/v4"
 	"net/http"
 )
 
@@ -13,10 +14,9 @@ func main() {
 		return
 	}
 
-	mux := handler.SetupRoutes()
+	e := echo.New()
 
-	if err := http.ListenAndServe(":8080", mux); err != nil {
-		fmt.Println("Failed to listen and serve")
-		return
-	}
+	handler.SetupRoutes(e)
+
+	e.Logger.Fatal(e.Start(":8080"))
 }

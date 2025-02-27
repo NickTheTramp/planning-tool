@@ -1,12 +1,13 @@
 package handler
 
-import "net/http"
+import (
+	"github.com/labstack/echo/v4"
+)
 
-func SetupRoutes() *http.ServeMux {
-	mux := http.NewServeMux()
-
-	mux.HandleFunc("/", EmployeeHandler)
-	mux.HandleFunc("/employee/{id}", EmployeeFormHandler)
-
-	return mux
+func SetupRoutes(e *echo.Echo) {
+	e.GET("/", EmployeeHandler)
+	e.POST("/employee", EmployeeHandler)
+	e.POST("/employee/new", EmployeeFormHandler)
+	e.GET("/employee/:id", EmployeeFormHandler)
+	e.POST("/employee/:id", EmployeeFormHandler)
 }

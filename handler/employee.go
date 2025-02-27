@@ -3,11 +3,12 @@ package handler
 import (
 	h "github.com/NickTheTramp/planning-tool/helper"
 	"github.com/NickTheTramp/planning-tool/model"
+	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
 )
 
-func EmployeeFormHandler(w http.ResponseWriter, r *http.Request) {
+func EmployeeFormHandler(c echo.Context) error {
 	route := h.Route{
 		Title:    "Employee Form",
 		FileName: "employeeForm.html",
@@ -29,10 +30,10 @@ func EmployeeFormHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	h.RenderTemplate(w, route, employee)
+	h.RenderTemplate(c.Response(), route, employee)
 }
 
-func EmployeeHandler(w http.ResponseWriter, r *http.Request) {
+func EmployeeHandler(c echo.Context) error {
 	route := h.Route{
 		Title:    "Employee Form",
 		FileName: "employeeForm.html",
@@ -51,5 +52,5 @@ func EmployeeHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	h.RenderTemplate(w, route, employee)
+	h.RenderTemplate(c.Response(), route, employee)
 }
